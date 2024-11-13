@@ -3,6 +3,7 @@ package com.example.Governance_app.controllers;
 import com.example.Governance_app.dtos.SignupRequest;
 import com.example.Governance_app.models.User;
 import com.example.Governance_app.services.UserService;
+import com.example.Governance_app.utils.enums.UserRole;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,10 +19,10 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PutMapping("/changeRole")
-    public ResponseEntity<String> changeRole(@RequestBody SignupRequest signupRequest) {
+    @PutMapping("/changeRole/{username}")
+    public ResponseEntity<String> changeRole(@RequestBody UserRole role, @PathVariable String username) {
         try {
-            String result = userService.changeRole(signupRequest.getUsername(), signupRequest.getRole());
+            String result = userService.changeRole(username, role);
             return ResponseEntity.ok(result);
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -29,20 +30,20 @@ public class UserController {
     }
 
 
-    @DeleteMapping("/deleteUser")
-    public ResponseEntity<String> deleteUser(@RequestBody SignupRequest signupRequest) {
+    @DeleteMapping("/deleteUser/{username}")
+    public ResponseEntity<String> deleteUser(@PathVariable String username) {
         try {
-            String result = userService.deleteUser(signupRequest.getUsername());
+            String result = userService.deleteUser(username);
             return ResponseEntity.ok(result);
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
-    @GetMapping("/getUser")
-    public ResponseEntity<?> getUser(@RequestBody SignupRequest signupRequest) {
+    @GetMapping("/getUser/{username}")
+    public ResponseEntity<?> getUser(@PathVariable String username) {
         try {
-            User result = userService.getUser(signupRequest.getUsername());
+            User result = userService.getUser(username);
             return ResponseEntity.ok(result);
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
