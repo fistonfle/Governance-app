@@ -1,0 +1,227 @@
+.Ministries {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 45px auto;
+    text-align: center;
+}
+
+article {
+    display: flex;
+    width: 390px;
+    flex: none;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
+    box-shadow: 10px 10px;
+
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 40px;
+    margin: 20px;
+
+    border: 5px solid #E5BE01;
+    border-radius: 4px;
+
+}
+
+.yellow-line1{
+    background-color: yellow;
+    height: 2px; /* Adjust the height as needed */
+    width: 100%;
+    margin: 0;
+}
+
+.yellow-line2{
+    background-color: yellow;
+    width: 66.5px;
+    height: 52px;
+    position: absolute;
+    top: 0;
+    left: 50px;
+}
+
+.yellow-line3{
+    background-color: yellow;
+    width: 66.5px;
+    height: 52px;
+    position: absolute;
+    top: 0;
+    right: 50px;
+}
+.green-line1{
+    background-color: green;
+    width: 50px;
+    height: 1500px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.green-line2{
+    background-color: green;
+    width: 50px;
+    height: 1500px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.headline {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+
+    height: 80px;
+    width: 100%;
+}
+
+.Min-logo {
+    display: block;
+    height: 80px;
+    width: 100%;
+    border-top: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+
+    padding-top: 5px;
+    padding-bottom: 12px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.Min-logo2 {
+    display: block;
+    height: 80px;
+    width: 100%;
+    border-top: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+
+    padding-top: 5px;
+    padding-bottom: 12px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.Min-logo3 {    display: block;
+    height: 80px;
+    width: 100%;
+    border-top: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+
+    padding-top: 5px;
+    padding-bottom: 12px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.max_guest, .number_rooms, .number_bathrooms {
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    margin: 0px auto;
+}
+
+.user {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.description {
+    text-align: left;
+    margin-top: 100px;
+}
+
+h1 {
+    display: block;
+    text-align: left;
+    width: 95%;
+    display: block;
+    margin-top: 0px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    font-size: 30px;
+}
+
+.article_subtitle {
+    font-size: 16px;
+    text-align: left;
+    width: 100%;
+    border-bottom: 1px solid #DDDDDD;
+    padding: 0px;
+    margin: 0px;
+    padding-bottom: 10px;
+}
+
+.article_title {
+    font-size: 30px;
+    margin: 10px auto;
+    padding: 0px;
+}
+
+article ul {
+    text-align: left;
+    margin-top: 200px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+article li {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: flex-start;
+    margin-bottom: 10px;
+}
+
+.reviews {
+    margin-top: 40px;
+    width: 100%;
+}
+
+.review_item {
+    margin-bottom: 10px;
+}
+
+.review_text {
+    margin: 0px;
+}
+
+article h3 {
+    font-size: 14px;
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 5px;
+
+}
+
+/*This is for the taskbar */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #00A1DE;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #111;
+}
+
+
+
+
+
+
