@@ -1,5 +1,7 @@
 package com.example.Governance_app.dtos;
 
+import com.example.Governance_app.models.Comment;
+
 import java.time.LocalDateTime;
 
 public class CommentDTO {
@@ -72,4 +74,17 @@ public class CommentDTO {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    // convert comment to commentDTO
+    public static CommentDTO fromComment(Comment comment) {
+        return new CommentDTO(
+                comment.getId(),
+                comment.getPost().getId(),
+                comment.getUser().getId(),
+                comment.getContent(),
+                comment.getCreatedAt(),
+                comment.getUser().getUsername()
+        );
+    }
+
 }

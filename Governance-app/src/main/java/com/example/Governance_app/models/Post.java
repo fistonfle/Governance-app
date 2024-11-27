@@ -1,9 +1,10 @@
 package com.example.Governance_app.models;
 
-
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "posts")
@@ -21,7 +22,7 @@ public class Post {
     private String title;
 
     @Lob
-    @Column(nullable = false)
+    @Column(nullable = false, length = 10000) // Set a specific length (e.g., 10,000 characters)
     private String content;
 
     @Column(name = "created_at", nullable = false)
@@ -30,15 +31,29 @@ public class Post {
     @Column(name = "view_count", nullable = false)
     private int viewCount = 0;
 
+    // Many-to-many relationship with Tag
+    @ManyToMany
+    @JoinTable(
+            name = "post_tags",
+            joinColumns = @JoinColumn(name = "post_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+    private Set<Tag> tags = new HashSet<>();
+
+    // Many-to-many relationship with Comment
+    @OneToMany(mappedBy = "post")
+    private Set<Comment> comments = new HashSet<>();
+
     // Constructors
     public Post() {
     }
 
-    public Post(User user, String title, String content, LocalDateTime createdAt) {
+    public Post(User user, String title, String content, LocalDateTime createdAt, Set<Tag> tags) {
         this.user = user;
         this.title = title;
         this.content = content;
         this.createdAt = createdAt;
+        this.tags = tags;
     }
 
     // Getters and Setters
@@ -88,5 +103,21 @@ public class Post {
 
     public void setViewCount(int viewCount) {
         this.viewCount = viewCount;
+    }
+
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
 }

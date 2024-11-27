@@ -2,10 +2,15 @@ package com.example.Governance_app.services;
 
 import com.example.Governance_app.dtos.CommentDTO;
 import com.example.Governance_app.models.Comment;
+import com.example.Governance_app.models.Post;
+import com.example.Governance_app.models.User;
 import com.example.Governance_app.repositories.CommentRepository;
+import com.example.Governance_app.repositories.PostRepository;
+import com.example.Governance_app.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -15,6 +20,10 @@ public class CommentService {
 
     @Autowired
     private CommentRepository commentRepository;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private PostRepository postRepository;
 
     // Convert a Comment entity to CommentDTO
     private CommentDTO convertToDTO(Comment comment) {
@@ -33,6 +42,13 @@ public class CommentService {
         Comment comment = new Comment();
         // Set fields from DTO to entity
         comment.setContent(commentDTO.getContent());
+
+        User user = userRepository.findById(commentDTO.getUserId()).orElseThrow();
+        comment.setUser(user);
+
+        comment.setCreatedAt(LocalDateTime.now());
+        Post post = postRepository.findById(commentDTO.getPostId()).orElseThrow();
+        comment.setPost(post);
         // Set other fields as necessary, such as user and post associations
         return comment;
     }

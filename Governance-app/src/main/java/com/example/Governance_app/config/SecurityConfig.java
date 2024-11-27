@@ -28,10 +28,10 @@ public class SecurityConfig {
         http
                 .csrf().disable()
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll() // Allow public access to Swagger
-                        .requestMatchers("/admin/**").hasRole("ADMIN") // Only ADMIN role can access /admin/** endpoints
-                        .requestMatchers("/user/**").hasRole("USER")   // Only USER role can access /user/** endpoints
-                        .anyRequest().authenticated()
+                        .requestMatchers("/auth/**", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/posts/**","/comments/**")
+                        .permitAll()
+                        .anyRequest()
+                        .authenticated()
                 )
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 

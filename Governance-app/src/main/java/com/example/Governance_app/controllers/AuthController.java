@@ -1,7 +1,9 @@
 package com.example.Governance_app.controllers;
 
 import com.example.Governance_app.dtos.AuthRequest;
+import com.example.Governance_app.dtos.LoginResponse;
 import com.example.Governance_app.dtos.SignupRequest;
+import com.example.Governance_app.dtos.UserDTO;
 import com.example.Governance_app.models.PasswordResetToken;
 import com.example.Governance_app.models.User;
 import com.example.Governance_app.repositories.PasswordResetTokenRepository;
@@ -47,14 +49,31 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody AuthRequest authRequest) {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
-        );
+    public ResponseEntity<?> login(@RequestBody AuthRequest authRequest) {
+        try {
+            // Authenticate the user
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
+            );
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        return jwtUtil.generateToken(authRequest.getUsername());
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+
+            // Generate JWT token
+            String token = jwtUtil.generateToken(authRequest.getUsername());
+
+            // Fetch user details
+            User user = userRepository.findByUsername(authRequest.getUsername());
+
+            // Map User to UserDTO
+            UserDTO userDTO = new UserDTO(user.getId(), user.getUsername(), user.getEmail());
+
+            // Prepare response
+            return ResponseEntity.ok(new LoginResponse(userDTO, token));
+        } catch (Exception e) {
+            return ResponseEntity.status(401).body("Invalid username or password");
+        }
     }
+
 
     @PostMapping("/signup")
     public ResponseEntity<String> registerUser(@RequestBody SignupRequest signupRequest) {

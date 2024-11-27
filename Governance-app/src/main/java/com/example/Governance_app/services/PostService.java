@@ -15,12 +15,17 @@ public class PostService {
     @Autowired
     private PostRepository postRepository;
 
-    public List<Post> getAllPosts() {
-        return postRepository.findAll();
+    public List<PostDTO> getAllPosts() {
+         List<Post> posts = postRepository.findAll();
+            return PostDTO.fromList(posts);
     }
 
-    public Optional<Post> getPostById(Long id) {
-        return postRepository.findById(id);
+    public Optional<PostDTO> getPostById(Long id) {
+        Post post = postRepository.findById(id).orElse(null);
+        if (post == null) {
+            return Optional.empty();
+        }
+        return Optional.of(PostDTO.fromPost(post));
     }
 
     public Post createPost(Post post) {
