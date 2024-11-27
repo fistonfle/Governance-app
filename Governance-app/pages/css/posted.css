@@ -1,0 +1,143 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00adef;
+  padding: 10px 0;
+  color: white;
+}
+
+.logo-circle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background-color: #ffd700;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 14px;
+  color: #00adef;
+  text-align: center;
+}
+
+.logo-circle::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border: 2px solid #00adef;
+  border-radius: 50%;
+}
+
+.logo-text {
+  font-family: Arial, sans-serif;
+  text-transform: uppercase;
+}
+
+/* Main Content */
+.main-content {
+  padding: 20px;
+}
+
+/* Feed Section */
+.feed {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.section-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Posts */
+.post {
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  background-color: #ddd;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user-details .username {
+  font-weight: bold;
+  margin: 0;
+  color: #333;
+}
+
+.user-details .handle {
+  font-size: 14px;
+  color: #777;
+  margin: 0;
+}
+
+.post-text {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-around;
+}
+
+.action-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #00adef;
+  padding: 5px 10px;
+}
+
+.action-button:hover {
+  color: #005f8f;
+}
+
+/* Post Button */
+.post-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #00adef;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.post-button:hover {
+  background-color: #005f8f;
+}
